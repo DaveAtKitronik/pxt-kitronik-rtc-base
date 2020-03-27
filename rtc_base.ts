@@ -120,7 +120,7 @@ namespace kitronik_RTC {
 
         //Reading weekday register so can mask the Battery backup supply
         writeBuf[0] = RTC_WEEKDAY_REG
-        pins.i2cWritenumber(CHIP_ADDRESS, RTC_WEEKDAY_REG,UInt8LE, false)
+        pins.i2cWritenumber(CHIP_ADDRESS, RTC_WEEKDAY_REG,NumberFormat.UInt8LE, false)
         readBuf = pins.i2cReadBuffer(CHIP_ADDRESS, 1, false)
         readWeekDayReg = readBuf[0]
 	      if((readWeekDayReg & ENABLE_BATTERY_BACKUP)==0) //we need to set the battery backup bit
@@ -132,7 +132,7 @@ namespace kitronik_RTC {
 	    
         //Seconds register read for current seconds for when masking start RTC bit
         writeBuf[0] = RTC_SECONDS_REG
-        pins.i2cWriteNumber(CHIP_ADDRESS,RTC_SECONDS_REG, UInt8LE, false)
+        pins.i2cWriteNumber(CHIP_ADDRESS,RTC_SECONDS_REG, NumberFormat.UInt8LE, false)
 
         readBuf = pins.i2cReadBuffer(CHIP_ADDRESS, 1, false)
         readCurrentSeconds = readBuf[0]
